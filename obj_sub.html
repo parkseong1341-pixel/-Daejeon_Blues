@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        /* 폰트 */
+        @font-face {
+            font-family: 'Shilla';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/Shilla_CultureM-Medium.woff2') format('woff2');
+            font-weight: 500;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Shilla';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/Shilla_CultureB-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'GyeonggiMillenniumBackground';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Batang_Regular.woff') format('woff');
+            font-weight: 400;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'GyeonggiMillenniumBackground';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Batang_Bold.woff') format('woff');
+            font-weight: 700;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Suit';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Thin.woff2') format('woff2');
+            font-weight: 100;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Suit';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-ExtraLight.woff2') format('woff2');
+            font-weight: 200;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Suit';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Light.woff2') format('woff2');
+            font-weight: 300;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Suit';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Light.woff2') format('woff2');
+            font-weight: 700;
+            font-display: swap;
+        }
+
+
+        /* 기본설정 */
+        * {margin: 0; padding: 0;box-sizing: border-box;}
+
+        html,body {
+            overflow-x: hidden;
+            font-size: 14px !important;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            display: block;
+            color: #333;
+        }
+
+
+/* 메뉴바 */
+        #menu {
+            width: 100%;
+            height: 95px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            position: fixed;
+            background-color: #ffffff;
+            border: none;
+            z-index: 998;
+        }
+
+        #menu.on {
+            border-bottom: 1px solid #b18383;
+        }
+
+        #logo {
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            width: calc(9% + 105px);
+        }
+
+        #menu>ul {
+            width: 70%;
+            height: 100%;
+            margin-left: 30%;
+        }
+
+        .menu-1 {
+            width: calc(18% - 10px);
+            height: 100%;
+            line-height: 95px;
+            float: left;
+            margin-left: 30px;
+            position: relative;
+        }
+
+        #menu>ul>li>a {
+            width: 100%;
+            text-align: center;
+            color: #444444;
+            display: inline-block;
+            font-size: 18px;
+            font-family: 'Noto Serif KR', serif !important;
+        }
+
+        .menu-2 {
+            position: absolute;
+            top: 94px;
+            width: 100%;
+        }
+
+        .menu-2 li {
+            background-color: #653900;
+            height: 40px;
+            line-height: 2.0;
+        }
+
+        .menu-2 li a:hover {
+            font-weight: 600;
+        }
+
+        .menu-2 li a {
+            text-align: center;
+            color: #ffffff;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            display: inline-block;
+            line-height: 1.2;
+            width: 180px
+        }
+
+        .line {
+            width: 0;
+            height: 2px;
+            background-color: #ffffff;
+            position: absolute;
+            margin-left: 50%;
+            transform: translate(-50%, -200%);
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        #menu-1 {
+            position: absolute;
+            right: 3%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #menu-1 li {
+            float: left;
+            line-height: 12px;
+        }
+
+        #menu-1 li:nth-child(1) {
+            border-right: 1px solid #b18383;
+        }
+
+        #menu-1 li img {
+            width: 20px;
+            position: absolute;
+            top: 20%;
+            transform: translate(-50%);
+            left: 0px;
+            opacity: 0.7;
+            transition: all 0.5s ease;
+        }
+
+        #menu-1 ul li a {
+            color: #b18383;
+            font-size: 12px;
+            padding: 10px;
+        }
+
+        #menu li a:nth-child(1):hover {
+            color: #653900;
+            font-weight: 600;
+        }
+
+        #menu li a:nth-child(1):hover .store {
+            opacity: 1;
+        }
+
+        #menu li a:nth-child(2):hover {
+            color: #653900;
+            font-weight: 600;
+        }
+
+        .ham {
+            width: 65px;
+            cursor: pointer;
+            position: absolute;
+            right: 2%;
+            top: 50%;
+            transform: translateY(-50%);
+            display: none;
+            z-index: 999;
+        }
+
+        .line01 {
+            width: 40px;
+            height: 2px;
+            background-color: #69380d;
+            display: block;
+            margin: 8px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* .line01:nth-of-type(1).on{transform:translateY(10px) rotate(45deg);}
+.line01:nth-of-type(2).on{opacity: 0;}
+.line01:nth-of-type(3).on{transform:translateY(-10px) rotate(-45deg);} 
+
+.ham x모양으로 만드는 css
+*/
+
+        /* 사이드메뉴 */
+        #side-menu {
+            width: 270px;
+            height: 100%;
+            background-color: #ffffff;
+            position: fixed;
+            right: -270px;
+            top: 0px;
+            z-index: 999;
+            border-left: 1px solid #999999;
+            transition: all 0.5s ease;
+        }
+
+        #side-menu a {
+            font-size: 13px;
+            color: #666666;
+        }
+
+        #side-menu li {
+            border-bottom: 1px solid #858585;
+            width: 100%;
+            height: auto;
+        }
+
+        #side-menu p {
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #653900;
+            width: 100%;
+            text-align: center;
+            height: 50px;
+            line-height: 50px;
+            display: inline-block;
+            position: relative;
+        }
+
+        #side-menu p img {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        .submenu-1 {
+            height: 41px;
+            background-color: #fafafa;
+        }
+
+        .submenu-2 {
+            background-color: rgb(235, 225, 225)
+        }
+
+        .submenu-1>a {
+            line-height: 41px;
+            width: 100%;
+            padding-left: 10px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .submenu-1>a>img {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .submenu-2 {
+            width: 100%;
+            display: none;
+            position: relative;
+            z-index: 998;
+        }
+
+        .submenu-2 li a {
+            width: 100%;
+            text-align: left;
+            line-height: 41px;
+            padding-left: 10px;
+        }
+
+        /* 사이드메뉴 */
+
+
+
+        /* 메뉴바 */
+
+        /* --------------------------------------- 헤더 --------------------------------------- */
+
+
+
+        .bo_header {
+            width: 100% !important;
+            height: 200px;
+            background: url(g5img/c-bg.jpg) no-repeat;
+            background-size: 100% 300px;
+            margin: 100px 0;
+        }
+
+        .bo_header h1 {
+            font-size: 50px;
+            text-align: center;
+            line-height: 200px;
+            color: #fff;
+            font-family: JS Arirang HON;
+        }
+
+        #content-wrap {
+            width: 100%;
+            margin: 40px auto 140px;
+        }
+
+        /* 컨텐츠 맨 위에 네비 */
+        #nav-top {
+            width: 100%;
+            height: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #nav-top ul {
+            width: 20%;
+            position: absolute;
+            right: 10px;
+            top: 0;
+            text-align: right;
+            overflow: hidden;
+        }
+
+        #nav-top ul li {
+            float: left;
+            margin: 0 6px;
+            line-height: 50px;
+            font-size: 12px;
+        }
+
+        #nav-top ul li a img {
+            margin-top: 16px;
+        }
+
+
+        #nav-right{
+            position: fixed; right: 0; top: 50%; transform: translateY(-50%); border-top: 4px solid #69380d;  border-bottom: 4px solid #69380d;
+            width: 100px; z-index: 1000; box-shadow: 1px 1px 1px #333;  background: rgba(255, 255, 255, 0.8);
+        }
+        #nav-right li{
+            width: 100%; height: 70px; line-height: 70px; text-align: center;
+        }
+
+        #nav-right li a{
+            width: 100%; height: 100%;
+        }
+
+        #nav-right li a.select{
+            color: #653900; border-bottom: 1px solid #653900; font-family: JS Arirang HON; font-size: 18px;
+        }
+
+        #top{position: fixed; top: 30px; left: 30px; font-size: 20px; z-index: 1110;}
+
+
+        /* 컨텐츠 영역 */
+
+        #content {
+            width: 100%;
+            margin-top: 50px;
+            transition: all 0.6s ease-in;
+            opacity: 1;
+        }
+
+        #content h1{
+            font-family: JS Arirang HON;
+            margin-bottom: 20px;
+        }
+
+        #content h3{
+            font-family: JS Arirang HON;
+        }
+
+        #content h5{
+            height: 70px; line-height: 70px;
+        }
+
+
+
+        /* 콘텐츠 1 */
+
+        #content-1{
+            width: 100%;
+            height: 700px;
+            margin: 50px auto; padding-top: 6px;
+            background: #fcfcfc;  background-image: url(img/logo.bg1.png) ; background-repeat: no-repeat; background-position: right bottom; opacity: 0.8; 
+        }
+
+        #content-1 .title{
+            width: 50%;
+            height: 150px;
+            margin: 30px auto;
+            padding: 20px 0;
+        }
+
+        #content-1 .title h1{
+            text-align: center;
+            font-size: 40px;
+            padding: 10px 0;
+        }
+
+        #content-1 .title h4{
+            text-align: center;
+            font-size: 20px;
+            color: #bbb; font-weight: normal;
+        }
+
+        #content-1 .article1-obj1{
+            height: 450px;
+            top:30px;
+            width: 100%;
+            margin: auto;
+            padding: 30px 0;
+
+        }
+
+        #content-1 .obj1-ul{
+            width: 100%; height: 350px;
+            padding: 6px;
+            display: flex; justify-content: center; gap: 44px; 
+        }
+
+        #content-1 .obj1-ul li{
+            position: relative; top: 0; left: 0; height: 100%;
+            width: 300px;
+            background: #fff; box-shadow: 0 0 8px #653900;
+        }
+
+        #content-1 .article img{
+            width: 100%;
+            height: 60%; margin-top: 50px;
+            background-image: 120% 100%;
+         }
+
+        #content-1 .obj1-ul-hover{
+            position: absolute; top: 0; left: 0; opacity: 0; 
+            transition: all 0.6s ease-out; margin: auto;
+            width: 100%; height: 100%; background: #00000034;
+            padding:30px 20px; color: #fcfcfc;
+        }
+
+        #content-1 .obj1-ul li:hover .obj1-ul-hover {
+          opacity: 1;
+          z-index: 99;
+          cursor: pointer;
+        }
+
+        #content-1 .obj1-ul-hover h3{
+            text-align: center; font-size: 18px; margin-bottom: 30px;
+        }
+
+        #content-1 .obj1-ul-hover p{
+            margin-bottom: 20px;
+        }
+
+
+        #content .span-left{
+           display: inline-block; width: 50px; height: 30px; line-height: 30px; text-align: center; font-size:14px; background: #653900; border-radius: 4px; margin: 0 6px;
+        }
+
+        #content .span-right{
+            font-size: 15px;
+        }
+
+        #content-1 .obj1-ul li h5{
+            position: absolute; bottom: -70px; left: 0; width: 100%; z-index: 100; font-size: 18px; font-weight: normal; 
+           text-align: center; padding: 6px;
+        }
+
+
+
+
+
+
+        /* 콘텐츠 2 */
+
+        #content-2{
+            width: 100%;
+            height: 700px;
+            margin: 50px auto; padding-top: 6px;
+            background: #fcfcfc;  background-image: url(img/logo.bg1.png) ; background-repeat: no-repeat; background-position: right bottom; opacity: 0.8; 
+        }
+
+        #content-2 .title{
+            width: 50%;
+            height: 150px;
+            margin: 30px auto;
+            padding: 20px 0;
+        }
+
+        #content-2 .title h1{
+            text-align: center;
+            font-size: 40px;
+            padding: 10px 0;
+        }
+
+        #content-2 .title h4{
+            text-align: center;
+            font-size: 20px;
+            color: #bbb; font-weight: normal;
+        }
+
+        #content-2 .article2-obj2{
+            height: 450px;
+            top:30px;
+            width: 100%;
+            margin: auto;
+            padding: 30px 0;
+
+        }
+
+        #content-2 .obj2-ul{
+            width: 100%; height: 350px;
+            padding: 6px;
+            display: flex; justify-content: center; gap: 44px; 
+        }
+
+        #content-2 .obj2-ul li{
+            position: relative; top: 0; left: 0; height: 100%;
+            width: 300px;
+            background: #fff; box-shadow: 0 0 8px #653900;
+        }
+
+        #content-2 .article img{
+            width: 100%;
+            height: 60%; margin-top: 50px;
+            background-image: 120% 100%;
+         }
+
+        #content-2 .obj2-ul-hover{
+            position: absolute; top: 0; left: 0; opacity: 0; 
+            transition: all 0.6s ease-out; margin: auto;
+            width: 100%; height: 100%; background: #00000034;
+            padding:30px 20px; color: #fcfcfc;
+        }
+
+        #content-2 .obj2-ul li:hover .obj2-ul-hover {
+          opacity: 1;
+          z-index: 99;
+          cursor: pointer;
+        }
+
+        #content-2 .obj2-ul-hover h3{
+            text-align: center; font-size: 18px; margin-bottom: 30px;
+        }
+
+        #content-2 .obj2-ul-hover p{
+            margin-bottom: 20px;
+        }
+
+        #content-2 .obj2-ul li h5{
+            position: absolute; bottom: -70px; left: 0; width: 100%; z-index: 100; font-size: 18px; font-weight: normal; 
+           text-align: center; padding: 6px;
+        }
+
+
+
+
+        /* 콘텐츠 3 */
+
+        #content-3{
+            width: 100%;
+            height: 750px;
+            margin: 50px auto; padding-top: 6px;
+            background: #fcfcfc; background-image: url(img/logo.bg1.png) ; background-repeat: no-repeat; background-position: right bottom; opacity: 0.8; 
+        }   
+
+        #content-3 .title{
+            width: 50%;
+            height: 150px;
+            margin: 30px auto 50px;
+            padding: 20px 0;
+        }
+
+        #content-3 .title h1{
+            text-align: center;
+            font-size: 40px;
+            padding: 10px 0;
+        }
+
+        #content-3 .title h4{
+            text-align: center;
+            font-size: 18px; line-height: 24px; 
+            color: #bbb; font-weight: normal;
+        }
+
+        #content-3 .article3-obj3{
+            height: 450px;
+            width: 100%;
+            margin: auto;
+            padding: 30px 0;
+
+        }
+
+        #content-3 .obj3-ul{
+            width: 100%; height: 350px;
+            padding: 6px;
+            display: flex; justify-content: center; gap: 44px; 
+        }
+
+        #content-3 .obj3-ul li{
+            position: relative; top: 0; left: 0; height: 100%;
+            width: 300px;
+            background: #fff; box-shadow: 0 0 8px #653900;
+        }
+
+        #content-3 .article img{
+            width: 100%;
+            height: 60%; margin-top: 50px;
+            background-image: 120% 100%;
+         }
+
+        #content-3 .obj3-ul-hover{
+            position: absolute; top: 0; left: 0; opacity: 0; 
+            transition: all 0.6s ease-out; margin: auto;
+            width: 100%; height: 100%; background: #00000034;
+            padding:30px 20px; color: #fcfcfc;
+        }
+
+        #content-3 .obj3-ul li:hover .obj3-ul-hover {
+          opacity: 1;
+          z-index: 99;
+          cursor: pointer;
+        }
+
+        #content-3 .obj3-ul-hover h3{
+            text-align: center; font-size: 18px; margin-bottom: 30px;
+        }
+
+        #content-3 .obj3-ul-hover p{
+            margin-bottom: 20px;
+        }
+
+        #content-3 .obj3-ul li h5{
+            position: absolute; bottom: -70px; left: 0; width: 100%; z-index: 100; font-size: 18px; font-weight: normal; 
+           text-align: center; padding: 6px;
+        }
+
+
+
+
+
+        /* 콘텐츠 4 */
+
+        #content-4{
+            width: 100%;
+            height: 700px;
+            margin: 50px auto; padding-top: 6px;
+            background: #fcfcfc;  background-image: url(img/logo.bg1.png) ; background-repeat: no-repeat; background-position: right bottom; opacity: 0.8; 
+        }
+
+        #content-4 .title{
+            width: 50%;
+            height: 150px;
+            margin: 30px auto;
+            padding: 20px 0;
+        }
+
+        #content-4 .title h1{
+            text-align: center;
+            font-size: 40px;
+            padding: 10px 0;
+        }
+
+        #content-4 .title h4{
+            text-align: center;
+            font-size: 20px;
+            color: #bbb; font-weight: normal;
+        }
+
+        #content-4 .article4-obj4{
+            height: 450px;
+            top:30px;
+            width: 100%;
+            margin: auto;
+            padding: 30px 0;
+
+        }
+
+        #content-4 .obj4-ul{
+            width: 100%; height: 350px;
+            padding: 6px;
+            display: flex; justify-content: center; gap: 44px; 
+        }
+
+        #content-4 .obj4-ul li{
+            position: relative; top: 0; left: 0; height: 100%;
+            width: 300px;
+            background: #fff; box-shadow: 0 0 8px #653900;
+        }
+
+        #content-4 .article img{
+            width: 100%;
+            height: 60%; margin-top: 50px;
+            background-image: 120% 100%;
+         }
+
+        #content-4 .obj4-ul-hover{
+            position: absolute; top: 0; left: 0; opacity: 0; 
+            transition: all 0.6s ease-out; margin: auto;
+            width: 100%; height: 100%; background: #00000034;
+            padding:30px 20px; color: #fcfcfc;
+        }
+
+        #content-4 .obj4-ul li:hover .obj4-ul-hover {
+          opacity: 1;
+          z-index: 99;
+          cursor: pointer;
+        }
+
+        #content-4 .obj4-ul-hover h3{
+            text-align: center; font-size: 18px; margin-bottom: 30px;
+        }
+
+        #content-4 .obj4-ul-hover p{
+            margin-bottom: 20px;
+        }
+
+        #content-4 .obj4-ul li h5{
+            position: absolute; bottom: -70px; left: 0; width: 100%; z-index: 100; font-size: 18px; font-weight: normal; 
+           text-align: center; padding: 6px;
+        }
+
+
+
+        /* 공통설정 */
+        #content .span-left{
+           display: inline-block; width: 50px; height: 30px; line-height: 30px; text-align: center; font-size:14px; background: #653900; border-radius: 4px; margin: 0 6px;
+        }
+
+        #content .span-right{
+            font-size: 15px;
+        }
+
+
+          #top{position: fixed; top: 30px; left: 30px; font-size: 20px;}
+
+
+         /* --------------------------------------- 푸터 --------------------------------------- */
+
+        #footer {
+            width: 100%;
+            height: 250px;
+            background-color: #49413a;
+        }
+
+        .footer-textbox {
+            margin-top: 50px;
+            margin-left: 15%;
+            width: 100%;
+            height: 100%;
+            padding-top: 50px;
+        }
+
+        .footer-textbox ul {
+            width: 100%;
+            height: 20px;
+        }
+
+        .footer-textbox ul li {
+            float: left;
+            border-left: 1px solid #afafaf;
+            color: #ffffff;
+            text-align: center;
+            padding: 0px 5px;
+            border-left: 1px solid #afafaf;
+        }
+
+        .footer-textbox ul li a {
+            font-size: 16px;
+            color: #ffffff;
+        }
+
+        .footer-textbox ul li span {
+            font-size: 16px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .footer-text01 {
+            display: block;
+        }
+
+        .footer-text01 li {
+            font-size: 16px;
+            line-height: 15px
+        }
+
+        .footer-text01 li:nth-of-type(1) {
+            border: none;
+        }
+
+        .footer-text02 {
+            display: block;
+            margin-top: 20px;
+        }
+
+        .footer-text02 li {
+            font-size: 16px;
+            line-height: 15px
+        }
+
+        .footer-text02 li:nth-of-type(1) {
+            border: none;
+        }
+
+        .footer-text03 {
+            display: block;
+            margin-top: 10px
+        }
+
+        .footer-text03 li {
+            font-size: 10px;
+            line-height: 10px
+        }
+
+        .footer-text03 li:nth-of-type(1) {
+            border: none;
+        }
+
+        .footer-text04 {
+            display: block;
+            margin-top: 10px
+        }
+
+        .footer-text04 li {
+            font-size: 10px;
+            line-height: 10px
+        }
+
+        .footer-text04 li:nth-of-type(1) {
+            border: none;
+        }
+
+        /* --------------------------------------- 푸터 --------------------------------------- */
+
+
+        /* --------------------------------------- 반응형 --------------------------------------- */
+
+
+               @media screen and (max-width:1400px) {
+            .footer-textbox {
+                width: 100%;
+                height: 100%;
+                margin-left: 0%;
+                margin-top: 0px;
+            }
+
+            .footer-textbox ul {
+                margin-top: 10px;
+            }
+
+            .footer-textbox ul li {
+                margin-top: 10px;
+            }
+        }
+
+        @media screen and (max-width:1081px) {
+            #footer {
+                bottom: -30px
+            }
+        }
+
+        @media screen and (max-width:534px) {
+            .footer-text01 li {
+                font-size: 14px;
+                line-height: 15px
+            }
+
+            .footer-text02 li {
+                font-size: 14px;
+                line-height: 15px
+            }
+
+            .footer-text03 li {
+                font-size: 14px;
+                line-height: 15px
+            }
+
+            .footer-textbox ul li span {
+                font-size: 15px;
+            }
+
+        }
+
+          @media screen and (max-width:1081px){
+                /* 우측 상단 사이드 메뉴바 */
+            #menu>ul {display: none;}
+            .ham{display: block;}
+            #menu-1{display: none;}
+            /* 우측 상단 사이드 메뉴바 */
+            #nav{top: 600px;}
+            #slide{height: 650px;}
+            }
+
+
+            @media screen and (max-width:900px){
+                #slide{height: 600px;}
+                #nav{top: 570px;}
+            }
+            
+            @media screen and (max-width:740px){
+                #slide{height: 550px;}
+                #nav{top: 530px;}
+            }
+
+
+
+
+         @media screen and (max-width: 1460px) {
+            #nav-top ul{width: 20%;}
+            #content .title{width: 80%;}
+            #content .title h4{font-size: 18px;}
+            #content h5{height: 40px !important; margin-top: 10px; line-height: 40px;}
+            #content-3 .title h4{font-size: 16px;}
+            #content .article article{width: 90%;}
+            #content .article article ul{width: 90%; height: 300px; margin: auto;}
+            #content .article article h5{font-size: 14px;}
+            #content .article article ul li p{margin-bottom: 10px; font-size: 12px;}
+            #content .span-left{font-size: 10px; width: 30px;}
+            #content .span-right{font-size: 12px;}
+            #content-4 .obj4-ul-hover p{margin-bottom: 5px !important;}
+        }
+
+         @media screen and (max-width: 1024px){
+            #nav-top ul{width: 20%;}
+            #nav-right{display: none;}
+            #content section{height: 1000px;}
+             #content .title{width: 80%;}
+            #content h5{height: 50px !important; line-height: 10px; font-size: 18px !important; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+            #content #content-2{height: 850px;}
+            #content .article{width: 100%; height: auto;}
+            #content .article article ul{width: 90%; height: auto; overflow: hidden; display: block; margin: auto;}
+            #content .article article ul li{margin: 40px 10px; height: 280px; width: 45%;}
+            #content .article article ul li h3{display: none;}
+            
+            #content .article article .obj-left{float: left;}
+            #content .article article .obj-right{float: right;}
+            /* #content .article article .obj1-ul-3{float: left;}
+            #content .article article .obj1-ul-4{float: right;} */
+
+
+         }
+
+           @media screen and (max-width: 767px){
+            #nav-top{display: none;}
+
+            .bo_header{height:100px ; margin-top:100px;}
+            .bo_header h1{font-size:30px ; line-height:100px;}
+
+             #content section{height: 800px;}
+             #content #content-2{height: 650px;}
+
+            #content .title{margin: auto;}
+            #content .title h1{font-size: 30px;}
+            #content .title h4{font-size: 13px;}
+            #content h5{font-size: 14px !important; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+
+            #content .article{width: 100%; height: auto;}
+            #content .article article{width: 100%; height: auto; padding: 0;}
+            #content .article article ul{width: 80%; height: auto; overflow: none; margin: auto;}
+            #content .article article ul li{width: 40%; height: 200px; float: none;}
+             #content .article article ul li div{ padding: 10px;}
+             #content .article article ul li p{margin-bottom: 8px; font-size: 10px;}
+            #content .span-left{font-size: 10px; width: 28px; height: 24px; line-height: 24px;}
+            #content .span-right{font-size: 10px;}
+           }
+
+        @media screen and (max-width: 300px){
+            #content-wrap{max-width: 300px; width: 300px;}
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+         /* --------------------------------------- 반응형 --------------------------------------- */
+    </style>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src=https://ajax.googleapis.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js></script>
+    <script>
+
+
+        $(function () {
+            // --------------------------------------- 헤더 --------------------------------------- */
+
+            /* 메뉴바 */
+            $('.menu-2').hide();
+
+            $('.menu-1').hover(function () {
+                $(this).css({ backgroundColor: '#653900' })
+                $(this).find("a").css({ color: '#ffffff' })
+                $(this).find(".menu-2").css('display', 'block');
+            }, function () {
+                $(this).css({ backgroundColor: '#ffffff' })
+                $(this).find("a").css({ color: '#444444' })
+                $(this).find(".menu-2").css('display', 'none');
+            });
+
+            $('.ham').click(function () {
+                $('.line01').toggleClass('on')
+            });
+
+            $('.menu-1').hover(function () {
+                $(this).children('div').css('width', '85%')
+            }, function () {
+                $(this).children('div').css('width', '0px')
+            });
+
+            $(window).scroll(function () {
+                if ($(window).scrollTop() <= 50) {
+                    $('#menu').removeClass('on')
+
+                } else if ($(window).scrollTop() >= 80) {
+                    $('#menu').addClass('on')
+                }
+            });
+            /* 메뉴바 */
+
+                       /* 사이드 메뉴바 */
+            $('.ham').click(function () {
+                /* $('.line01').toggleClass('on'); */
+                $('#side-menu').css('right', '0px');
+            });
+
+            $('#side-menu p img').click(function () {
+                $('#side-menu').css('right', '-270px')
+            });
+
+
+            $('.submenu-1 > a').click(function (e) {
+                e.preventDefault(); // 링크 막기
+
+                let submenu = $(this).siblings('.submenu-2'); // 현재 메뉴의 submenu-2
+                let arrow = $(this).find('img');              // 현재 a 안의 img
+
+                submenu.slideToggle(200, function () {
+                    if ($(this).is(':visible')) {
+                        arrow.attr('src', 'img/uparrow.png');
+                    } else {
+                        arrow.attr('src', 'img/downarrow.png');
+                    }
+                });
+            });
+
+            /* 사이드 메뉴바 */
+
+
+            // 네비 right
+
+            $('html, body').animate({scrollTop:0},);
+
+            $(window).scroll(function(){
+                
+                var ab = $(this).scrollTop();
+                $('#top').text(ab);
+
+                if($(window).scrollTop() <= 1399){
+                    $('a').removeClass('select');
+                    $('.content-1').addClass('select');
+                }else if($(window).scrollTop() <= 2499){
+                    $('a').removeClass('select');
+                    $('.content-2').addClass('select');
+                }else if($(window).scrollTop() <= 3599){
+                    $('a').removeClass('select');
+                    $('.content-3').addClass('select');
+                }else if($(window).scrollTop() >= 3600){
+                    $('a').removeClass('select');
+                    $('.content-4').addClass('select');
+                }
+            });
+
+            $('.content-1').click(function(){
+                $('html,body').animate({scrollTop:400},1000); //전체를 감싸는 html, body로 지정(전체가 움직여야함)
+                $('a').removeClass('select');
+                $(this).addClass('select');
+            });
+            $('.content-2').click(function(){
+                $('html,body').animate({scrollTop:1400},1000); 
+                $('a').removeClass('select');
+                $(this).addClass('select');
+            });
+            $('.content-3').click(function(){
+                $('html,body').animate({scrollTop:2500},1000); 
+                $('a').removeClass('select');
+                $(this).addClass('select');
+            });
+            $('.content-4').click(function(){
+                $('html,body').animate({scrollTop:3600},1000); 
+                $('a').removeClass('select');
+                $(this).addClass('select');
+            });
+            $(window).trigger('scroll'); 
+            
+
+
+
+            /* --------------------------------------- 헤더 --------------------------------------- */
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <!------------------------- 헤더 ------------------------->
+
+
+      <!-- 메뉴바 -->
+    <div id="menu">
+        <a href="http://khh315.dothome.co.kr/"><img id="logo" src="img/logo.png" width="200px"></a>
+        <ul>
+            <li class="menu-1"><a href="#">스토리</a>
+                <div class="line"></div>
+                <ul class="menu-2">
+                    <li><a href="story_sub1.html">임직원 인사말</a></li>
+                    <li><a href="story_sub2.html">브랜드스토리</a></li>
+                    <li><a href="story_sub3.html">찾아오시는길</a></li>
+                </ul>
+            </li>
+            <li class="menu-1"><a href="obj_sub.html">제품소개</a>
+                <div class="line"></div>
+            </li>
+            <li class="menu-1"><a href="#">가맹점</a>
+                <div class="line"></div>
+                <ul class="menu-2">
+                    <li><a href="http://khh315.dothome.co.kr/g5/bbs/board.php?bo_table=free">거래처 매장안내</a></li>
+                    <li><a href="http://khh315.dothome.co.kr/g5/bbs/write.php?bo_table=form">가맹점문의</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div id="menu-1">
+            <ul>
+                <li><a href="#"><img src="img/store.png" class="store">스토어</a></li>
+                <li><a href="#">고객센터</a></li>
+        </div>
+        <div class="ham">
+            <span class="line01"></span>
+            <span class="line01"></span>
+            <span class="line01"></span>
+        </div>
+    </div>
+    <!-- 메뉴바 -->
+
+      <!-- 사이드메뉴 -->
+  <div id="side-menu">
+        <p><img src="img/close.png">서브메뉴</p>
+        <ul>
+      <li class="submenu-1"><a href="#">스토리<img src="img/downarrow.png"></a>
+        <ul class="submenu-2">
+          <li><a href="story_sub1.html">임직원 인사말</a></li>
+          <li><a href="story_sub2.html">브랜드스토리</a></li>
+          <li><a href="story_sub3.html">찾아오시는길</a></li>
+        </ul>
+      </li>
+      <li class="submenu-1"><a href="obj_sub.html">제품소개<img src="img/downarrow.png"></a>
+        <ul class="submenu-2">
+          <li><a href="obj_sub.html">생막걸리</a></li>
+          <li><a href="obj_sub.html">프리미엄찹쌀생막걸리</a></li>
+          <li><a href="obj_sub.html">산소등류주 0<spna>2</spna> 황금곳간</a></li>
+          <li><a href="obj_sub.html">선물세트</a></li>
+        </ul>
+      </li>
+      <li class="submenu-1"><a href="#">가맹점<img src="img/downarrow.png"></a>
+        <ul class="submenu-2">
+          <li><a href="http://khh315.dothome.co.kr/g5/bbs/board.php?bo_table=free">거래처 매장안내</a></li>
+          <li><a href="http://khh315.dothome.co.kr/g5/bbs/write.php?bo_table=form">가맹점문의</a></li>
+        </ul>
+      </li>
+    </ul>
+      </div>
+  <!-- 사이드메뉴 -->
+
+
+    <!------------------------- 헤더 ------------------------->
+
+    <!-- 게시판 맨 위 제목 -->
+    <div class="bo_header">
+        <h1>제품소개</h1>
+    </div>
+
+    <!-- <p id="top">0</p> -->
+
+    <div id="content-wrap">
+
+
+        <!-- 컨텐츠 맨 위에 네비 -->
+        <nav id="nav-top">
+            <ul>
+                <li><a href="http://khh315.dothome.co.kr/"><img src="g5img/home_i.png" alt="홈" width="13px"></a></li>
+                <li>></li>
+                <li>제품소개</li>
+            </ul>
+        </nav>
+
+        <!-- 컨텐츠 오른쪽 네비 -->
+
+        <nav id="nav-right">
+            <ul>
+                <li><a href="#content-1" class="content-1">생막걸리</a></li>
+                <li><a href="#content-2" class="content-2">찹쌀생막걸리</a></li>
+                <li><a href="#content-3" class="content-3">황금곳간</a></li>
+                <li><a href="#content-4" class="content-4">선물세트</a></li>
+            </ul>
+        </nav>
+
+        <!-- 컨텐츠 시작 -->
+        <div id="content">
+
+            <!-- 첫번째 콘텐츠 : 생막걸리 -->
+
+            <section id="content-1">
+                <div class="title">
+                    <h1>생막걸리</h1>
+                    <h4>순수 국내산 쌀과 누룩을 사용해 밀과 조합하는 방식으로 빚었습니다.</h4>
+                </div>
+                <div class="article">
+                    <article class="article1-obj1">
+                        <ul class="obj1-ul">
+                            <li class="obj1-ul-1 obj-left">
+                                <img src="img/obj-content1-1.jpg" alt="">
+                                 <div class="obj1-ul-hover">
+                                    <h3>대전부르스 정통 생막걸리</h3>
+                                    <p><span class="span-left">주종</span><span class="span-right">생막걸리</span></p>
+                                    <p><span class="span-left">원료</span><span class="span-right">쌀(국내산), 우리 누룩, 밀 정제수</span></p>
+                                    <p><span class="span-left">알콜</span><span class="span-right">6%</span></p>
+                                    <p><span class="span-left">용량</span><span class="span-right">750ml, 1200ml, 1700ml</span></p>
+                                </div>
+                                <h5>대전부르스 정통 생막걸리</h5>
+                            </li>
+
+                            <li class="obj1-ul-2 obj-right">
+                                <img src="img/obj-content1-2.jpg" alt="">
+                                <div class="obj1-ul-hover">
+                                    <h3>LEGEND zero 무감미 무첨가</h3>
+                                    <p><span class="span-left">주종</span><span class="span-right">프리미엄 생막걸리</span></p>
+                                    <p><span class="span-left">원료</span><span class="span-right">쌀(국내산), 우리 누룩 정제수</span></p>
+                                    <p><span class="span-left">알콜</span><span class="span-right">8%</span></p>
+                                    <p><span class="span-left">용량</span><span class="span-right">750ml</span></p>
+                                </div>
+                                <h5>LEGEND zero 무감미 무첨가</h5>
+                            </li>
+
+                            <li class="obj1-ul-3  obj-left">
+                                <img src="img/obj-content1-3.jpg" alt="">
+                                <div class="obj1-ul-hover"> 
+                                    <h3 style="letter-spacing: -1px;">LEGEND zero 맑은술 무감미 무첨가</h3>
+                                    <p><span class="span-left">주종</span><span class="span-right">전설의 생막걸리 맑은술(용수)</span></p>
+                                    <p><span class="span-left">원료</span><span class="span-right">쌀(국내산), 우리 누룩 정제수</span></p>
+                                    <p><span class="span-left">알콜</span><span class="span-right">15%</span></p>
+                                    <p><span class="span-left">용량</span><span class="span-right">500ml</span></p>
+                                </div>
+                                <h5>LEGEND zero 맑은술 무감미 무첨가</h5>                            
+                            </li>
+
+
+                            <li class="obj1-ul-4 obj-right">
+                                <img src="img/obj-content1-4.jpg" alt="">
+                                <div class="obj1-ul-hover"> 
+                                    <h3>국민탁주 0시 50분</h3>
+                                    <p><span class="span-left">주종</span><span class="span-right">전통 생 탁주</span></p>
+                                    <p><span class="span-left">원료</span><span class="span-right">쌀(국내산), 우리 누룩, 밀 정제수</span></p>
+                                    <p><span class="span-left">알콜</span><span class="span-right">6%</span></p>
+                                    <p><span class="span-left">용량</span><span class="span-right">750ml</span></p>
+                                </div>
+                                <h5>국민탁주 0시 50분</h5>                                                      
+                            </li>
+                        </ul>
+                    </article>
+
+
+                </div>
+
+            </section>
+
+            <div class="content-line" style="width: 100%; margin: 180px 0; border: 1px solid #f1f1f1;"></div>
+
+            <section id="content-2">
+                <div class="title">
+                    <h1>프리미엄 찹쌀생막걸리</h1>
+                    <h4>농협 찹쌀 ‘옥토진미’를 사용해 누룩과 정제수만으로 빚어 <br>
+                        장기 발효, 저온 숙성한 ‘93, 황금곳간’은 찹쌀 생막걸리의 참맛을 선사합니다.</h4>
+                </div>
+                <div class="article">
+                <article class="article2-obj2">
+                        <ul class="obj2-ul">
+                            <li class="obj2-ul-1  obj-left">
+                                <img src="img/obj-content2-1.jpg" alt="">
+                                 <div class="obj2-ul-hover">
+                                    <h3>93, 황금곳간 LEGEND zero</h3>
+                                    <p><span class="span-left">주종</span><span class="span-right">찹쌀생막걸리</span></p>
+                                    <p><span class="span-left">원료</span><span class="span-right">쌀(국내산), 우리 누룩, 밀 정제수</span></p>
+                                    <p><span class="span-left">알콜</span><span class="span-right">6% / 8%</span></p>
+                                    <p><span class="span-left">용량</span><span class="span-right">930ml</span></p>
+                                </div>
+                                <h5>93, 황금곳간 LEGEND zero</h5>
+                            </li>
+
+                            <li class="obj2-ul-2 obj-right">
+                                <img src="img/obj-content2-2.jpg" style="background-position: right;" alt="">
+                                <div class="obj2-ul-hover">
+                                    <h3>모정 손 생막걸리</h3>
+                                    <p><span class="span-left">주종</span><span class="span-right">쌀생막걸리</span></p>
+                                    <p><span class="span-left">원료</span><span class="span-right">쌀(국내산), 우리 누룩 정제수</span></p>
+                                    <p><span class="span-left">알콜</span><span class="span-right">8.3%</span></p>
+                                    <p><span class="span-left">용량</span><span class="span-right">750ml</span></p>
+                                </div>
+                                <h5>모정 손 생막걸리</h5>
+                            </li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+             <div class="content-line" style="width: 100%; margin: 180px 0; border: 1px solid #f1f1f1;"></div>
+
+            <section id="content-3">
+    
+                <div class="title">
+                    <h1>산소증류주 O₂ 황금곳간</h1>
+                    <h4>양주, 고량주(연태), 사케를 마시며 외화유출에 앞장서는 것이 아닌 <br>
+                        우리쌀로 빚은 무감미, 무첨가 정통 순곡 증류주로 나라 사랑 실천도 동시에! <br>
+                        농협쌀 옥토진미로 빚어 그윽한 순곡의 풍미와 황토옹기에서 장기숙성되어 깊고 부드러운 바디감을~ <br>
+                        산소(O₂)를 듬뿍담아 깔끔한 뒤끝의 전통 특산주입니다.</h4>
+                </div>
+                <div class="article">
+                <article class="article3-obj3">
+                        <ul class="obj3-ul">
+                            <li class="obj3-ul-1  obj-left">
+                                <img src="img/obj-content3-1.jpg" alt="">
+                                 <div class="obj3-ul-hover">
+                                    <h3>산소증류주 O₂황금곳간 25.3%</h3>
+                                    <p>부담가지 않는 알콜도수로 젊은세대부터 기성 소주세대까지 판안하게 즐길수 있습니다.</p>
+                                    <p>쌀을 잘 숙성시킨 진하고 부드러운 알콜의 참맛을 느끼실 수 있습니다.</p>
+                                    <p>특수기법으로 산소를 듬뿍 담아 숙취에 대한 부담을 확 줄였습니다.</p>
+                                    <p><span class="span-left">알콜</span><span class="span-right">25.3%</span></p>
+                                </div>
+                                <h5>산소증류주 O₂황금곳간 25.3%</h5>
+                            </li>
+
+                            <li class="obj3-ul-2 obj-right">
+                                <img src="img/obj-content3-2.jpg" alt="">
+                                <div class="obj3-ul-hover">
+                                    <h3>산소증류주 O₂황금곳간 33.8%</h3>
+                                    <p>혀에 감기는 진한 감칠맛이 정통 순곡주의 품격을 느끼게 합니다.</p>
+                                    <p>전통 술 제조방식을 고수하여 모든 세대가 모두 만족할 수 있는 진미를 살려냈습니다.</p>
+                                    <p><span class="span-left">알콜</span><span class="span-right">33.8%</span></p>
+                                </div>
+                                <h5>산소증류주 O₂황금곳간 33.8%</h5>
+                            </li>
+
+                            <li class="obj3-ul-3  obj-left">
+                                <img src="img/obj-content3-3.jpg" alt="">
+                                <div class="obj3-ul-hover"> 
+                                    <h3>산소증류주 O₂황금곳간 38.3%</h3>
+                                    <p>전통 高 도주 특유의 진한 맛과 향이 혀와 코를 매료시킵니다.</p>
+                                    <p>황토옹기에 장기 숙성되어 부드러운 바디감과 고순도 산소가 융해되어 담겨 적당히 드시면 숙취의 부담이 적습니다.</p>
+                                    <p><span class="span-left">알콜</span><span class="span-right">38.3%</span></p>
+                                </div>
+                                <h5>산소증류주 O₂황금곳간 38.3%</h5>                            
+                            </li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+             <div class="content-line" style="width: 100%; margin: 180px 0; border: 1px solid #f1f1f1;"></div>
+
+
+            <section id="content-4">
+                <div class="title">
+                    <h1>대전부르스주조 선물세트</h1>
+                    <h4>소중한 사람을 위한 특별한 선물 <br> 대전부르스주조에서 프리미엄 선물세트로 마음을 선물하세요.</h4>
+                </div>
+                <div class="article">
+                <article class="article4-obj4">
+                        <ul class="obj4-ul">
+                            <li class="obj4-ul-1  obj-left">
+                                <img src="img/obj-content4-1.jpg" alt="">
+                                 <div class="obj4-ul-hover">
+                                    <h3>특1호</h3>
+                                    <p>산소증류수 O₂ 황금곳간 25.3%</p>
+                                    <p><span class="span-left">구성</span><span class="span-right">375ml A형 1본 375ml B형 1본 </span></p>
+                                    <p>산소증류수 O₂황금곳간 33.8%</p>
+                                    <p><span class="span-left">구성</span><span class="span-right">500ml A형 1본 전용잔 2본 </span></p>
+                                </div>
+                                <h5>특1호</h5>
+                            </li>
+
+                            <li class="obj4-ul-2 obj-right">
+                                <img src="img/obj-content4-2.jpg" alt="">
+                                <div class="obj4-ul-hover">
+                                    <h3>특2호</h3>
+                                    <p style="margin-bottom: 10px;">산소증류수 O₂황금곳간 25.3%</p>
+                                    <p  style="margin-bottom: 10px;"><span class="span-left">구성</span><span class="span-right">375ml A형 1본 </span></p>
+                                    <p  style="margin-bottom: 10px;">산소증류수 O₂황금곳간 33.8%</p>
+                                    <p  style="margin-bottom: 10px;"><span class="span-left">구성</span><span class="span-right">500ml 1본</span></p>
+                                    <p  style="margin-bottom: 10px;">산소증류수 O₂황금곳간 38.3%</p>
+                                    <p  style="margin-bottom: 10px;"><span class="span-left">구성</span><span class="span-right">750ml 1본 전용잔 2본 </span></p>
+                                </div>
+                                <h5>특2호</h5>
+                            </li>
+
+                            <li class="obj4-ul-3  obj-left">
+                                <img src="img/obj-content4-3.jpg" alt="">
+                                <div class="obj4-ul-hover"> 
+                                    <h3>실속형 3호</h3>
+                                    <p>산소증류수 O₂황금곳간 25.3%</p>
+                                    <p><span class="span-left">구성</span><span class="span-right">500ml 2본</span></p>
+                                </div>
+                                    <h5>실속형 3호</h5>                            
+                            </li>
+
+
+                            <li class="obj4-ul-4 obj-right">
+                                <img src="img/obj-content4-4.jpg" alt="">
+                                <div class="obj4-ul-hover"> 
+                                    <h3>실속형 4호</h3>
+                                    <p>LEGEND 무감미, 무첨가 93, 황금곳간 ZERO 8%</p>
+                                    <p><span class="span-left">구성</span><span class="span-right">930ml 3본</span></p>
+                                </div>
+                                <h5>실속형 4호</h5>                                                      
+                            </li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+        </div>
+        <!-- 컨텐츠 끝 -->
+    </div>
+
+
+   <!------------------------- footer ------------------------->
+    <div id="footer">
+        <div class="footer-textbox">
+            <ul class="footer-text01">
+                <li><a href="#">개인정보처리방침</a></li>
+                <li><a href="#">이용약관</a></li>
+            </ul>
+
+            <ul class="footer-text02">
+                <li>대전부르스주조 농업회사법인(유)</li>
+                <li><span>평촌점</span>:대전 서구 평촌동 362-2 / <span>구암점</span>:대전광역시 유성구 계룡로 18번길 38</li>
+                <li>문의 : 042-335-6310</li>
+                <li>대표 : 김나영</li>
+                <li>사업자등록번호 : 450-88-01804</li>
+            </ul>
+
+            <ul class="footer-text03">
+                <li>팩스번호 : 042-335-6311</li>
+                <li>이메일 : djbs3356310@naver.com</li>
+            </ul>
+
+            <ul class="footer-text04">
+                <li>COPYRIGHT 대전부르스주조 농업회사법인(유). ALL RIGHTS RESERVED.</li>
+                <li>Homepage by 이홈피넷</li>
+            </ul>
+        </div>
+    </div>
+
+    <!------------------------- footer ------------------------->
+</body>
+
+</html>
